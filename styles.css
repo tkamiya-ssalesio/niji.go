@@ -1,18 +1,17 @@
 :root {
-  --theme-primary: #38bdf8; /* Sky Blue 400 */
-  --theme-secondary: #0ea5e9; /* Sky Blue 500 */
-  --theme-accent: #818cf8; /* Indigo 400 */
-  --apple-blue: #3b82f6;
-  --apple-green: #34d399; /* Emerald 400 */
+  --theme-primary: #facc15; /* Chalk Yellow (Yellow 400) */
+  --theme-secondary: #eab308; /* Chalk Yellow (Yellow 500) */
+  --theme-accent: #38bdf8; /* Chalk Blue (Sky 400) */
+  --theme-cyan: #2dd4bf; /* Chalk Green (Teal 400) */
+  --apple-green: #4ade80; /* Emerald 400 */
   --apple-red: #f87171; /* Red 400 */
-  --apple-yellow: #fbbf24; /* Amber 400 */
-  --apple-bg: #0f172a; /* Slate 900 - sleek dark bg */
-  --apple-card-bg: #1e293b; /* Slate 800 */
-  --apple-text-primary: #f8fafc; /* Slate 50 */
-  --apple-text-secondary: #cbd5e1; /* Slate 300 */
-  --apple-input-bg: #334155; /* Slate 700 */
-  --glass-border: #475569; /* Slate 600 */
-  --glass-border-focus: #38bdf8;
+  --apple-bg: #0c1510; /* Deep Blackboard Dark Green */
+  --apple-card-bg: #16261d; /* Blackboard Green */
+  --apple-input-bg: #0c1510; /* Darker Blackboard Green for Inputs */
+  --glass-border: #274032; /* Subtle chalk border */
+  --glass-border-focus: #facc15;
+  --apple-text-primary: #ffffff; /* Chalk White - High contrast */
+  --apple-text-secondary: #94a3b8; /* Slate 400 */
 }
 
 * {
@@ -30,8 +29,18 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--apple-bg);
-  background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%),
-                    radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.03), transparent 45%);
+  /* Mathematical background grid and parabola curve chalk design */
+  background-image: 
+    /* 1. Grid Blackboard Lines */
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    /* 2. Math coordinate parabola backdrop */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><g stroke='rgba(255, 255, 255, 0.02)' stroke-width='1.5' fill='none'><line x1='0' y1='400' x2='800' y2='400'/><line x1='400' y1='0' x2='400' y2='800'/><path d='M 100 100 Q 400 720 700 100' stroke-width='2'/><circle cx='400' cy='720' r='5' fill='rgba(255, 255, 255, 0.03)'/><text x='420' y='380' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='26' font-style='italic'>y = ax² + bx + c</text><text x='760' y='390' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>x</text><text x='415' y='30' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>y</text></g></svg>"),
+    /* 3. Soft ambient light from center */
+    radial-gradient(circle at center, rgba(39, 64, 50, 0.2), transparent 70%);
+  background-size: 40px 40px, 800px 800px, 100% 100%;
+  background-position: center, center, center;
+  background-repeat: repeat, no-repeat, no-repeat;
   color: var(--apple-text-primary);
   min-height: 100vh;
   display: flex;
@@ -48,10 +57,10 @@ body {
 
 .apple-card {
   background: var(--apple-card-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 28px;
+  border: 1.5px solid var(--glass-border);
+  border-radius: 24px;
   padding: 32px 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -62,7 +71,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--glass-border);
+  border-bottom: 1.5px solid var(--glass-border);
   padding-bottom: 12px;
 }
 
@@ -73,9 +82,7 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.5px;
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--theme-primary);
 }
 
 .back-btn {
@@ -113,11 +120,9 @@ h1 {
   font-weight: 800;
   letter-spacing: -2px;
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--theme-primary);
   margin-bottom: 4px;
-  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.15));
+  text-shadow: 0 4px 10px rgba(250, 204, 21, 0.1);
 }
 
 .title-subtitle {
@@ -135,6 +140,7 @@ h1 {
   text-align: center;
   margin-bottom: 12px;
   font-family: 'Outfit', sans-serif;
+  color: var(--apple-text-primary);
 }
 
 .menu-buttons {
@@ -151,20 +157,18 @@ h1 {
   width: 100%;
   padding: 18px 20px;
   border-radius: 20px;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   background: var(--apple-input-bg);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   color: var(--apple-text-primary);
   font-size: 16px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s;
 }
 .menu-btn:hover {
-  background: #3f51b540;
+  background: rgba(250, 204, 21, 0.05);
   border-color: var(--theme-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.1);
 }
 .menu-btn:active {
   transform: scale(0.98);
@@ -176,16 +180,16 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .btn-text h3 {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 2px;
+  color: var(--apple-text-primary);
 }
 .btn-text p {
   font-size: 13px;
@@ -197,7 +201,7 @@ h1 {
   background: var(--apple-input-bg);
   border-radius: 20px;
   padding: 24px;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -212,6 +216,7 @@ h1 {
 .tutorial-slide p {
   font-size: 14px;
   line-height: 1.6;
+  color: var(--apple-text-primary);
 }
 .tutorial-slide .highlight {
   color: var(--theme-primary);
@@ -226,7 +231,7 @@ h1 {
   background: var(--apple-bg);
   border-radius: 14px;
   padding: 16px;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -235,6 +240,7 @@ h1 {
 }
 .visual-box .math {
   font-size: 22px;
+  color: var(--apple-text-primary);
 }
 
 .tutorial-nav-btns {
@@ -254,7 +260,7 @@ h1 {
   background: var(--apple-bg);
   border-radius: 20px;
   padding: 20px;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
 }
 .intro-steps {
   display: flex;
@@ -276,7 +282,7 @@ h1 {
   margin-bottom: 6px;
 }
 .step-badge {
-  background: var(--theme-primary);
+  background: var(--theme-accent);
   color: var(--apple-bg);
   font-size: 10px;
   font-weight: 800;
@@ -288,6 +294,7 @@ h1 {
 .intro-step h3 {
   font-size: 15px;
   font-weight: 700;
+  color: var(--apple-text-primary);
 }
 .intro-step p {
   font-size: 13px;
@@ -311,7 +318,8 @@ h1 {
   border-radius: 12px;
   font-weight: 600;
   font-size: 14px;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
+  color: var(--apple-text-primary);
 }
 
 .equation-container {
@@ -329,6 +337,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--apple-text-primary);
 }
 
 /* --- Input Blocks and Hybrid System --- */
@@ -375,7 +384,7 @@ h1 {
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   border-radius: 12px;
   background: var(--apple-input-bg);
   color: var(--apple-text-primary);
@@ -385,7 +394,7 @@ h1 {
   outline: none;
   background: var(--apple-bg);
   border-color: var(--theme-primary);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
 }
 
 .val-input.mini-input {
@@ -414,7 +423,7 @@ h1 {
 
 .toggle-frac-btn {
   background: transparent;
-  color: var(--theme-primary);
+  color: var(--theme-accent);
   border: 1px solid rgba(56, 189, 248, 0.3);
   padding: 3px 8px;
   border-radius: 12px;
@@ -426,12 +435,12 @@ h1 {
 }
 .toggle-frac-btn:hover {
   background: rgba(56, 189, 248, 0.1);
-  border-color: var(--theme-primary);
+  border-color: var(--theme-accent);
 }
 .toggle-frac-btn.active {
-  background: var(--theme-accent);
-  color: white;
-  border-color: var(--theme-accent);
+  background: var(--theme-cyan);
+  color: var(--apple-bg);
+  border-color: var(--theme-cyan);
 }
 
 .bracket {
@@ -482,7 +491,7 @@ h1 {
 }
 .choice-btn {
   background: var(--apple-input-bg);
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   color: var(--apple-text-primary);
   padding: 10px 16px;
   border-radius: 12px;
@@ -493,13 +502,13 @@ h1 {
 }
 .choice-btn:hover {
   border-color: var(--theme-primary);
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(250, 204, 21, 0.05);
 }
 .choice-btn.active {
   background: var(--theme-primary);
   color: var(--apple-bg);
   border-color: var(--theme-primary);
-  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.2);
 }
 .solutions-row {
   display: flex;
@@ -532,7 +541,7 @@ h1 {
 }
 .sign-select {
   background: var(--apple-input-bg);
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   padding: 10px 12px;
   border-radius: 10px;
   font-size: 20px;
@@ -562,7 +571,7 @@ h1 {
   transition: background 0.2s;
 }
 .change-format-link:hover {
-  background: rgba(129, 140, 248, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* --- Category 5: Graph Matching Layout --- */
@@ -576,7 +585,7 @@ h1 {
 }
 .graph-card {
   background: var(--apple-bg);
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   border-radius: 16px;
   padding: 8px;
   position: relative;
@@ -590,11 +599,10 @@ h1 {
 .graph-card:hover {
   border-color: var(--theme-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(56, 189, 248, 0.1);
 }
 .graph-card.active {
   border-color: var(--theme-primary);
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(250, 204, 21, 0.05);
   box-shadow: 0 0 0 2px var(--theme-primary);
 }
 .graph-canvas {
@@ -602,14 +610,14 @@ h1 {
   height: auto;
   max-width: 170px;
   border-radius: 8px;
-  background: #1e293b;
+  background: #090e0b;
 }
 .graph-card .badge {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--glass-border);
   color: var(--apple-text-primary);
   font-size: 12px;
   font-weight: 800;
@@ -622,26 +630,32 @@ h1 {
 }
 
 /* --- Primary and Secondary Buttons --- */
+.actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .primary-btn {
   background: var(--theme-primary);
-  color: var(--apple-bg);
+  color: var(--apple-bg); /* High-contrast: Black text on yellow background */
   border: none;
   border-radius: 16px;
   padding: 14px 24px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
+  transition: all 0.2s;
   width: 100%;
   max-width: 280px;
-  margin: 0 auto;
   text-align: center;
+  margin: 0;
 }
 .primary-btn:hover {
   background: var(--theme-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 16px rgba(250, 204, 21, 0.35);
 }
 .primary-btn:active {
   transform: translateY(1px);
@@ -650,7 +664,7 @@ h1 {
 .secondary-btn {
   background: var(--apple-input-bg);
   color: var(--apple-text-primary);
-  border: 1px solid var(--glass-border);
+  border: 1.5px solid var(--glass-border);
   border-radius: 12px;
   padding: 10px 18px;
   font-size: 14px;
@@ -659,8 +673,8 @@ h1 {
   transition: all 0.2s;
 }
 .secondary-btn:hover {
-  background: #475569;
-  border-color: var(--apple-text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--apple-text-primary);
 }
 
 /* --- Feedback Toast --- */
@@ -677,7 +691,7 @@ h1 {
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 .feedback.show {
   top: 30px;
