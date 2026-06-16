@@ -650,7 +650,8 @@ h1 {
   width: 100%;
   max-width: 280px;
   text-align: center;
-  margin: 0;
+  display: block;      /* Block display to allow margin auto */
+  margin: 0 auto;      /* Force horizontal centering in any container */
 }
 .primary-btn:hover {
   background: var(--theme-secondary);
@@ -659,6 +660,12 @@ h1 {
 }
 .primary-btn:active {
   transform: translateY(1px);
+}
+
+.tutorial-nav-btns .primary-btn {
+  width: auto;
+  min-width: 120px;
+  margin: 0;           /* Reset auto margin in flex navigation */
 }
 
 .secondary-btn {

@@ -1093,10 +1093,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const p = (Math.floor(Math.random() * 5) - 2) * 1.5; // -3, -1.5, 0, 1.5, 3
     const q = (Math.floor(Math.random() * 5) - 2) * 1.5;
 
-    // Correct formula representation
+    // Helper to format values as fractions for LaTeX
+    const formatMathVal = (val) => {
+      if (val === 0) return '0';
+      if (val % 1 === 0) return `${Math.abs(val)}`;
+      const frac = simplifyFraction(Math.round(val * 100), 100);
+      return `\\frac{${Math.abs(frac.n)}}{${frac.d}}`;
+    };
+
+    // Correct formula representation (using LaTeX fractions instead of decimals)
     const aStr = a === 1 ? '' : (a === -1 ? '-' : a);
-    const pStr = p === 0 ? 'x' : (p > 0 ? `x - ${p}` : `x + ${Math.abs(p)}`);
-    const qStr = q === 0 ? '' : (q > 0 ? ` + ${q}` : ` - ${Math.abs(q)}`);
+    
+    let pStr = 'x';
+    if (p !== 0) {
+      const pFormatted = formatMathVal(p);
+      const sign = p > 0 ? '-' : '+';
+      pStr = `x ${sign} ${pFormatted}`;
+    }
+    
+    let qStr = '';
+    if (q !== 0) {
+      const qFormatted = formatMathVal(q);
+      const sign = q > 0 ? '+' : '-';
+      qStr = ` ${sign} ${qFormatted}`;
+    }
+
     const eqLatex = p === 0 ? `y = ${aStr}x^2${qStr}` : `y = ${aStr}(${pStr})^2${qStr}`;
 
     problemPrompt.textContent = '次の数式に最もよく一致するグラフのカードを選びなさい。';
