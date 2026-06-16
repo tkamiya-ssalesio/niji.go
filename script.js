@@ -111,25 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
       slides: [
         `
         <div class="tutorial-slide">
-          <p>平方完成とは、一般の2次関数 <span class="highlight">y = ax² + bx + c</span> を、頂点がひと目でわかる形 <span class="highlight">y = a(x - p)² + q</span> に変形する操作です。</p>
+          <p>平方完成とは、一般の2次関数 <span class="math">y = ax^2 + bx + c</span> を、頂点がひと目でわかる形 <span class="math">y = a(x - p)^2 + q</span> に変形する操作です。</p>
           <div class="visual-box">
             <div class="math">y = x^2 - 6x + 10</div>
-            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ xの係数の「半分」の2乗を作る</p>
+            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ <span class="math">x</span> の係数の「半分」の2乗を作る</p>
             <div class="math">y = (x - 3)^2 - 9 + 10</div>
             <div class="math">y = (x - 3)^2 + 1</div>
           </div>
-          <p>この変形により、グラフの頂点が <span class="highlight">(3, 1)</span>、軸が <span class="highlight">x = 3</span> であることが分かります。</p>
+          <p>この変形により、グラフの頂点が <span class="math">(3, 1)</span>、軸が <span class="math">x = 3</span> であることが分かります。</p>
         </div>
         `,
         `
         <div class="tutorial-slide">
-          <p class="warning">⚠️ 注意点：x² の係数が 1 以外のとき</p>
-          <p>x² の係数 <span class="highlight">a</span> で、まず x の項までを括り出してから平方完成を行います。</p>
+          <p class="warning">⚠️ 注意点：<span class="math">x^2</span> の係数が <span class="math">1</span> 以外のとき</p>
+          <p><span class="math">x^2</span> の係数 <span class="math">a</span> で、まず <span class="math">x</span> の項までを括り出してから平方完成を行います。</p>
           <div class="visual-box">
             <div class="math">y = 2x^2 + 8x + 5</div>
-            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ x²の係数 2 で括る</p>
+            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ <span class="math">x^2</span> の係数 <span class="math">2</span> で括る</p>
             <div class="math">y = 2(x^2 + 4x) + 5</div>
-            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ カッコの中を平方完成（外に出すときに 2倍する！）</p>
+            <p style="font-size:12px; color:var(--apple-text-secondary);">↓ カッコの中を平方完成（外に出すときに <span class="math">2</span> 倍する！）</p>
             <div class="math">y = 2\{(x+2)^2 - 4\} + 5</div>
             <div class="math">y = 2(x+2)^2 - 8 + 5</div>
             <div class="math">y = 2(x+2)^2 - 3</div>
@@ -145,22 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="tutorial-slide">
           <p>2次関数の最大値・最小値は、<span class="highlight">グラフの凸の向き</span>と<span class="highlight">頂点の位置</span>で決まります。</p>
           <div class="visual-box" style="gap:12px;">
-            <p><strong>下に凸 (a > 0) のとき</strong></p>
+            <p><strong>下に凸 (<span class="math">a &gt; 0</span>) のとき</strong></p>
             <p>頂点部分で <span class="highlight">最小値</span> をとる。（最大値は無限に大きくなるため、範囲がない場合は「なし」）</p>
-            <p><strong>上に凸 (a < 0) のとき</strong></p>
+            <p><strong>上に凸 (<span class="math">a &lt; 0</span>) のとき</strong></p>
             <p>頂点部分で <span class="highlight">最大値</span> をとる。（最小値は「なし」）</p>
           </div>
         </div>
         `,
         `
         <div class="tutorial-slide">
-          <p>定義域（xの範囲）が制限されている場合は、以下の3点のうちどこで最大・最小になるかを調べます。</p>
+          <p>定義域（<span class="math">x</span> の範囲）が制限されている場合は、以下の3点のうちどこで最大・最小になるかを調べます。</p>
           <p class="highlight">① 定義域の左端の値、② 頂点での値、③ 定義域の右端の値</p>
           <div class="visual-box">
             <p>例: <span class="math">y = (x-2)^2 + 1 \\quad (0 \\leqq x \\leqq 5)</span></p>
             <p style="font-size:13px; text-align:left;">
-              ・頂点 <span class="math">x=2</span> は範囲内 → 最小値は <span class="highlight">y=1</span> (x=2 のとき)<br>
-              ・軸 <span class="math">x=2</span> から遠い方の端 <span class="math">x=5</span> で最も高くなる → 最大値は <span class="highlight">y=(5-2)^2+1 = 10</span> (x=5 のとき)
+              ・頂点 <span class="math">x=2</span> は範囲内 → 最小値は <span class="math">y=1</span> (<span class="math">x=2</span> のとき)<br>
+              ・軸 <span class="math">x=2</span> から遠い方の端 <span class="math">x=5</span> で最も高くなる → 最大値は <span class="math">y=(5-2)^2+1 = 10</span> (<span class="math">x=5</span> のとき)
             </p>
           </div>
         </div>
@@ -172,25 +172,25 @@ document.addEventListener('DOMContentLoaded', () => {
       slides: [
         `
         <div class="tutorial-slide">
-          <p>2次方程式 <span class="highlight">ax² + bx + c = 0</span> の実数解は、2次関数 <span class="math">y = ax² + bx + c</span> のグラフと <span class="highlight">x軸との共有点のx座標</span> に一致します。</p>
+          <p>2次方程式 <span class="math">ax^2 + bx + c = 0</span> の実数解は、2次関数 <span class="math">y = ax^2 + bx + c</span> のグラフと <span class="highlight"><span class="math">x</span> 軸との共有点の <span class="math">x</span> 座標</span> に一致します。</p>
           <div class="visual-box">
             <p>判別式 <span class="math">D = b^2 - 4ac</span></p>
             <p style="font-size:13px; text-align:left;">
-              ・<span class="highlight">D > 0</span> : 共有点は 2個（異なる2つの実数解）<br>
-              ・<span class="highlight">D = 0</span> : 共有点は 1個（重解、グラフはx軸と接する）<br>
-              ・<span class="highlight">D < 0</span> : 共有点は 0個（実数解なし、グラフはx軸と交わらない）
+              ・<span class="math">D &gt; 0</span> : 共有点は <span class="math">2</span> 個（異なる2つの実数解）<br>
+              ・<span class="math">D = 0</span> : 共点は <span class="math">1</span> 個（重解、グラフは <span class="math">x</span> 軸と接する）<br>
+              ・<span class="math">D &lt; 0</span> : 共点は <span class="math">0</span> 個（実数解なし、グラフは <span class="math">x</span> 軸と交わらない）
             </p>
           </div>
         </div>
         `,
         `
         <div class="tutorial-slide">
-          <p>2次不等式を解くときは、放物線を描いて <span class="highlight">x軸より上にあるか下にあるか</span> を視覚的に判断します。</p>
+          <p>2次不等式を解くときは、放物線を描いて <span class="highlight"><span class="math">x</span> 軸より上にあるか下にあるか</span> を視覚的に判断します。</p>
           <div class="visual-box">
-            <p>例: <span class="math">x^2 - 4x + 3 > 0</span></p>
-            <p style="font-size:12px; color:var(--apple-text-secondary);">左辺を因数分解して交点を求める: (x-1)(x-3) > 0</p>
-            <p style="font-size:13px;">交点は x = 1, 3。y > 0 (x軸の上側) の範囲なので：</p>
-            <p class="highlight" style="font-size:18px;">x < 1, \\; 3 < x</p>
+            <p>例: <span class="math">x^2 - 4x + 3 &gt; 0</span></p>
+            <p style="font-size:12px; color:var(--apple-text-secondary);">左辺を因数分解して交点を求める: <span class="math">(x-1)(x-3) &gt; 0</span></p>
+            <p style="font-size:13px;">交点は <span class="math">x = 1, 3</span>。<span class="math">y &gt; 0</span> (<span class="math">x</span> 軸の上側) の範囲なので：</p>
+            <p class="highlight" style="font-size:18px;"><span class="math">x &lt; 1, \\; 3 &lt; x</span></p>
           </div>
         </div>
         `
@@ -261,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tutorialSelectScreen.classList.remove('hidden');
     appHeader.classList.remove('hidden');
     headerTitle.textContent = 'やり方を学ぶ';
+    backBtn.textContent = '◀ 戻る';
   });
 
   goToTrainingBtn.addEventListener('click', () => {
@@ -268,11 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
     categorySelectScreen.classList.remove('hidden');
     appHeader.classList.remove('hidden');
     headerTitle.textContent = 'カテゴリ選択';
+    backBtn.textContent = '◀ 戻る';
   });
 
   backBtn.addEventListener('click', () => {
     resetGameTimers();
-    if (!tutorialSelectScreen.classList.contains('hidden') && !categorySelectScreen.classList.contains('hidden')) {
+    if (!tutorialSelectScreen.classList.contains('hidden') || !categorySelectScreen.classList.contains('hidden')) {
       hideAllScreens();
       titleScreen.classList.remove('hidden');
     } else if (!tutorialScreen.classList.contains('hidden')) {
@@ -280,16 +282,19 @@ document.addEventListener('DOMContentLoaded', () => {
       tutorialSelectScreen.classList.remove('hidden');
       appHeader.classList.remove('hidden');
       headerTitle.textContent = 'やり方を学ぶ';
+      backBtn.textContent = '◀ 戻る'; // Reset label
     } else if (!modeSelectScreen.classList.contains('hidden')) {
       hideAllScreens();
       categorySelectScreen.classList.remove('hidden');
       appHeader.classList.remove('hidden');
       headerTitle.textContent = 'カテゴリ選択';
+      backBtn.textContent = '◀ 戻る';
     } else if (!introScreen.classList.contains('hidden')) {
       hideAllScreens();
       modeSelectScreen.classList.remove('hidden');
       appHeader.classList.remove('hidden');
       headerTitle.textContent = 'ゲームモード選択';
+      backBtn.textContent = '◀ 戻る';
     } else if (!problemArea.classList.contains('hidden')) {
       // In-game quit
       hideAllScreens();
@@ -309,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tutorialScreen.classList.remove('hidden');
       appHeader.classList.remove('hidden');
       headerTitle.textContent = '解説';
+      backBtn.textContent = '◀ 閉じる'; // Specific label for exiting slideshow
       updateTutorialSlide();
     });
   });
@@ -344,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tutorialSelectScreen.classList.remove('hidden');
       appHeader.classList.remove('hidden');
       headerTitle.textContent = 'やり方を学ぶ';
+      backBtn.textContent = '◀ 戻る'; // Reset label
     }
   });
 
@@ -723,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       
       // Inject domain into the prompt description
-      problemPrompt.textContent = `次の定義域における２次関数の最大値・最小値とその時のxの値を求めなさい： 範囲: ${xMin} ≦ x ≦ ${xMax}`;
+      problemPrompt.textContent = `次の定義域における２次関数の最大値・最小値とその時の <span class="math">x</span> の値を求めなさい： 範囲: <span class="math">${xMin} \\leqq x \\leqq ${xMax}</span>`;
     }
 
     // Render Equation
@@ -829,7 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetSol2
     };
 
-    problemPrompt.textContent = '次の2次関数について、x軸との共有点の個数と、共有点がある場合はそのx座標を求めなさい（y=0とおいた2次方程式の解）。';
+    problemPrompt.textContent = '次の2次関数について、<span class="math">x</span> 軸との共有点の個数と、共有点がある場合はその <span class="math">x</span> 座標を求めなさい（<span class="math">y=0</span> とおいた2次方程式の解）。';
     
     equationDisplay.classList.remove('rendered');
     equationDisplay.textContent = eqLatex;
