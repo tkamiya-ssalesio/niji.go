@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>niji.go | 2次関数・2次方程式・2次不等式トレーニング</title>
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- canvas-confetti for effects -->
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Main App Card -->
+    <div class="apple-card" id="app-card">
+      
+      <!-- App Header (Hidden on Title Screen) -->
+      <header id="app-header" class="hidden">
+        <button class="back-btn" id="back-btn">◀ 戻る</button>
+        <h1 id="header-title">niji.go</h1>
+        <div class="header-placeholder"></div>
+      </header>
+
+      <!-- 1. Title Screen -->
+      <div id="title-screen" class="title-screen">
+        <div class="title-logo">niji.go</div>
+        <div class="title-subtitle">2次式・2次関数特訓アプリ</div>
+        
+        <div class="menu-buttons">
+          <button class="menu-btn" id="go-to-tutorial-btn">
+            <span class="icon">📖</span>
+            <div class="btn-text">
+              <h3>やり方を学ぶ</h3>
+              <p>2次関数の本質をスライドで理解する</p>
+            </div>
+          </button>
+          
+          <button class="menu-btn" id="go-to-training-btn">
+            <span class="icon">⚡</span>
+            <div class="btn-text">
+              <h3>トレーニングを開始する</h3>
+              <p>5つのカテゴリと4つのゲームモード</p>
+            </div>
+          </button>
+        </div>
+        <div class="app-footer">v1.0.0 | Produced by Antigravity</div>
+      </div>
+
+      <!-- 2. Tutorial Select Screen -->
+      <div id="tutorial-select-screen" class="hidden">
+        <h2 class="screen-title">何を学びますか？</h2>
+        <div class="menu-buttons">
+          <button class="menu-btn tutorial-btn" data-tutorial="kansei">
+            <span class="icon">🔰</span>
+            <div class="btn-text">
+              <h3>平方完成のコツ</h3>
+              <p>標準形への変形手順と計算ミスを防ぐ方法</p>
+            </div>
+          </button>
+          <button class="menu-btn tutorial-btn" data-tutorial="minmax">
+            <span class="icon">📈</span>
+            <div class="btn-text">
+              <h3>頂点と最大・最小</h3>
+              <p>軸の特定と、定義域による最大・最小の変化</p>
+            </div>
+          </button>
+          <button class="menu-btn tutorial-btn" data-tutorial="ineq">
+            <span class="icon">⚔️</span>
+            <div class="btn-text">
+              <h3>2次方程式・2次不等式</h3>
+              <p>グラフの共有点と正負の領域から答えを導く</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. Tutorial Slideshow Screen -->
+      <div id="tutorial-screen" class="hidden">
+        <h2 class="slide-title" id="tutorial-title">チュートリアル</h2>
+        <div class="tutorial-card">
+          <div id="tutorial-content">
+            <!-- Dynamic tutorial slides injected here -->
+          </div>
+        </div>
+        <div class="tutorial-nav-btns">
+          <button class="secondary-btn" id="tutorial-prev-btn">◀ 戻る</button>
+          <div class="slide-indicator" id="slide-indicator">1 / 3</div>
+          <button class="primary-btn" id="tutorial-next-btn">次へ ▶</button>
+        </div>
+      </div>
+
+      <!-- 4. Category Select Screen -->
+      <div id="category-select-screen" class="hidden">
+        <h2 class="screen-title">学習カテゴリを選択</h2>
+        <div class="menu-buttons">
+          <button class="menu-btn category-btn" data-category="kansei">
+            <span class="icon">🔰</span>
+            <div class="btn-text">
+              <h3>① 平方完成</h3>
+              <p>一般形から基本形に変形する特訓</p>
+            </div>
+          </button>
+          <button class="menu-btn category-btn" data-category="minmax">
+            <span class="icon">📈</span>
+            <div class="btn-text">
+              <h3>② 頂点と最大・最小</h3>
+              <p>頂点・軸の抽出と定義域内の最大最小値</p>
+            </div>
+          </button>
+          <button class="menu-btn category-btn" data-category="equation">
+            <span class="icon">⚔️</span>
+            <div class="btn-text">
+              <h3>③ 2次方程式と共有点</h3>
+              <p>x軸との交点、判別式、実数解の計算</p>
+            </div>
+          </button>
+          <button class="menu-btn category-btn" data-category="inequality">
+            <span class="icon">🎯</span>
+            <div class="btn-text">
+              <h3>④ 2次不等式</h3>
+              <p>放物線とx軸の上下関係から解の範囲を特定</p>
+            </div>
+          </button>
+          <button class="menu-btn category-btn" data-category="matching">
+            <span class="icon">🎨</span>
+            <div class="btn-text">
+              <h3>⑤ グラフマッチング</h3>
+              <p>式に一致する放物線グラフを4択から選ぶ</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 5. Game Mode Select Screen -->
+      <div id="mode-select-screen" class="hidden">
+        <h2 class="screen-title" id="mode-select-title">ゲームモードを選択</h2>
+        <div class="menu-buttons">
+          <button class="menu-btn game-mode-btn" data-mode="practice">
+            <span class="icon">♾️</span>
+            <div class="btn-text">
+              <h3>練習モード</h3>
+              <p>制限時間なし。じっくりマイペースにトレーニング</p>
+            </div>
+          </button>
+          <button class="menu-btn game-mode-btn" data-mode="timeAttack">
+            <span class="icon">⏱️</span>
+            <div class="btn-text">
+              <h3>タイムアタック</h3>
+              <p>10問正解するまでの最速タイムを競う（誤答ペナルティあり）</p>
+            </div>
+          </button>
+          <button class="menu-btn game-mode-btn" data-mode="survival">
+            <span class="icon">❤️</span>
+            <div class="btn-text">
+              <h3>サバイバル</h3>
+              <p>ライフは3つ。間違えるたびにライフ減少、どこまで進めるか</p>
+            </div>
+          </button>
+          <button class="menu-btn game-mode-btn" data-mode="scoreAttack">
+            <span class="icon">🔥</span>
+            <div class="btn-text">
+              <h3>スコアアタック</h3>
+              <p>制限時間60秒。コンボを繋げてハイスコアを目指せ！</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. Intro Screen (Instructions before game start) -->
+      <div id="intro-screen" class="hidden">
+        <h2 class="screen-title" id="intro-title">ゲーム開始準備</h2>
+        <div class="intro-box">
+          <div class="intro-steps">
+            <div class="intro-step">
+              <div class="step-header">
+                <span class="step-badge" id="intro-cat-badge">カテゴリ</span>
+                <h3 id="intro-cat-name">平方完成</h3>
+              </div>
+              <p id="intro-cat-desc">与えられた2次関数を平方完成し、各係数の値を入力してください。</p>
+            </div>
+            <div class="intro-step">
+              <div class="step-header">
+                <span class="step-badge" id="intro-mode-badge" style="background:var(--apple-green);">ルール</span>
+                <h3 id="intro-mode-name">練習モード</h3>
+              </div>
+              <p id="intro-mode-desc">時間制限はありません。連続正解記録を伸ばしましょう。</p>
+            </div>
+          </div>
+        </div>
+        <button class="primary-btn" id="start-game-btn" style="margin-top: 20px;">スタート！</button>
+      </div>
+
+      <!-- 7. Problem Area (The actual game view) -->
+      <div id="problem-area" class="hidden">
+        <!-- Stats bar -->
+        <div class="stats-bar" id="stats-bar">
+          <span id="stats-left">カテゴリ名</span>
+          <span id="stats-right">ステータス</span>
+        </div>
+
+        <!-- Problem math display -->
+        <div class="equation-container">
+          <div class="prompt-text" id="problem-prompt">次の式を平方完成しなさい。</div>
+          <div class="equation-display math" id="equation-display">
+            y = x^2 + 4x + 3
+          </div>
+        </div>
+
+        <!-- Answers area (Different layout per category) -->
+        <div class="input-area" id="input-area">
+          
+          <!-- Category 1: 平方完成 Input Row (y = a(x - p)^2 + q) -->
+          <div id="input-row-kansei" class="input-row hidden">
+            <div class="formula-layout">
+              <span class="math">y = </span>
+              <!-- a coefficient -->
+              <div class="input-block" id="block-a">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" pattern="[0-9\-]*" class="val-input" id="input-a" placeholder="a">
+                  <div class="fraction-inputs hidden" id="frac-a">
+                    <input type="text" class="val-input num-input" id="input-a-num" placeholder="分子">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-a-den" placeholder="分母">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="a">分数</button>
+              </div>
+
+              <!-- (x - p)^2 -->
+              <span class="bracket">(</span>
+              <span class="math">x</span>
+              <span class="math" style="margin: 0 4px;">-</span>
+              
+              <div class="input-block" id="block-p">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" pattern="[0-9\-]*" class="val-input" id="input-p" placeholder="p">
+                  <div class="fraction-inputs hidden" id="frac-p">
+                    <input type="text" class="val-input num-input" id="input-p-num" placeholder="分子">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-p-den" placeholder="分母">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="p">分数</button>
+              </div>
+              <span class="bracket">)</span>
+              <span class="exponent">2</span>
+
+              <!-- + q -->
+              <span class="math" style="margin: 0 8px;">+</span>
+              <div class="input-block" id="block-q">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" pattern="[0-9\-]*" class="val-input" id="input-q" placeholder="q">
+                  <div class="fraction-inputs hidden" id="frac-q">
+                    <input type="text" class="val-input num-input" id="input-q-num" placeholder="分子">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-q-den" placeholder="分母">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="q">分数</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: 頂点と最大最小 Input Rows -->
+          <div id="input-row-minmax" class="input-row hidden">
+            <!-- Vertex input -->
+            <div class="mm-row" id="row-vertex">
+              <span class="mm-label">頂点:</span>
+              <span class="bracket">(</span>
+              <div class="input-block">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" class="val-input" id="input-vp" placeholder="p">
+                  <div class="fraction-inputs hidden" id="frac-vp">
+                    <input type="text" class="val-input num-input" id="input-vp-num">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-vp-den">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="vp">分数</button>
+              </div>
+              <span class="math">,</span>
+              <div class="input-block">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" class="val-input" id="input-vq" placeholder="q">
+                  <div class="fraction-inputs hidden" id="frac-vq">
+                    <input type="text" class="val-input num-input" id="input-vq-num">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-vq-den">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="vq">分数</button>
+              </div>
+              <span class="bracket">)</span>
+            </div>
+
+            <!-- Axis input -->
+            <div class="mm-row hidden" id="row-axis">
+              <span class="mm-label">軸の方程式:</span>
+              <span class="math">x = </span>
+              <div class="input-block">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" class="val-input" id="input-axis" placeholder="p">
+                  <div class="fraction-inputs hidden" id="frac-axis">
+                    <input type="text" class="val-input num-input" id="input-axis-num">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-axis-den">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="axis">分数</button>
+              </div>
+            </div>
+
+            <!-- Max value input -->
+            <div class="mm-row hidden" id="row-max">
+              <span class="mm-label">最大値:</span>
+              <span class="math">x = </span>
+              <input type="text" class="val-input mini-input" id="input-max-x" placeholder="x">
+              <span class="math" style="margin: 0 4px;">のとき</span>
+              <div class="input-block">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" class="val-input" id="input-max-val" placeholder="値">
+                  <div class="fraction-inputs hidden" id="frac-max-val">
+                    <input type="text" class="val-input num-input" id="input-max-val-num">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-max-val-den">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="max-val">分数</button>
+              </div>
+            </div>
+
+            <!-- Min value input -->
+            <div class="mm-row hidden" id="row-min">
+              <span class="mm-label">最小値:</span>
+              <span class="math">x = </span>
+              <input type="text" class="val-input mini-input" id="input-min-x" placeholder="x">
+              <span class="math" style="margin: 0 4px;">のとき</span>
+              <div class="input-block">
+                <div class="hybrid-input-wrapper">
+                  <input type="text" class="val-input" id="input-min-val" placeholder="値">
+                  <div class="fraction-inputs hidden" id="frac-min-val">
+                    <input type="text" class="val-input num-input" id="input-min-val-num">
+                    <div class="frac-line"></div>
+                    <input type="text" class="val-input den-input" id="input-min-val-den">
+                  </div>
+                </div>
+                <button class="toggle-frac-btn" data-target="min-val">分数</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: 2次方程式と共有点 Input Rows -->
+          <div id="input-row-equation" class="input-row hidden">
+            <!-- D (discriminant) / num points selector -->
+            <div class="eq-type-row" id="eq-choice-row">
+              <p style="margin-bottom: 8px;">実数解の個数は？</p>
+              <div class="choice-buttons">
+                <button class="choice-btn point-count-btn" data-count="2">2個</button>
+                <button class="choice-btn point-count-btn" data-count="1">1個 (重解)</button>
+                <button class="choice-btn point-count-btn" data-count="0">0個 (なし)</button>
+              </div>
+            </div>
+
+            <!-- Real solutions inputs -->
+            <div class="solution-inputs-box hidden" id="solution-inputs-box">
+              <p style="margin-bottom: 8px;" id="sol-prompt">実数解の値を入力してください：</p>
+              <div class="solutions-row">
+                <!-- x1 -->
+                <span class="math">x = </span>
+                <div class="input-block" id="block-sol1">
+                  <div class="hybrid-input-wrapper">
+                    <input type="text" class="val-input" id="input-sol1" placeholder="解1">
+                    <div class="fraction-inputs hidden" id="frac-sol1">
+                      <input type="text" class="val-input num-input" id="input-sol1-num">
+                      <div class="frac-line"></div>
+                      <input type="text" class="val-input den-input" id="input-sol1-den">
+                    </div>
+                  </div>
+                  <button class="toggle-frac-btn" data-target="sol1">分数</button>
+                </div>
+
+                <!-- x2 (Optional, shown if 2 points) -->
+                <div id="block-sol2-wrapper" class="hidden" style="display:inline-flex; align-items:center; gap: 8px;">
+                  <span class="math">, </span>
+                  <div class="input-block" id="block-sol2">
+                    <div class="hybrid-input-wrapper">
+                      <input type="text" class="val-input" id="input-sol2" placeholder="解2">
+                      <div class="fraction-inputs hidden" id="frac-sol2">
+                        <input type="text" class="val-input num-input" id="input-sol2-num">
+                        <div class="frac-line"></div>
+                        <input type="text" class="val-input den-input" id="input-sol2-den">
+                      </div>
+                    </div>
+                    <button class="toggle-frac-btn" data-target="sol2">分数</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: 2次不等式 Input Rows -->
+          <div id="input-row-inequality" class="input-row hidden">
+            <!-- Format selector (e.g. x < a, a < x < b, all, none) -->
+            <div class="ineq-format-selector" id="ineq-format-selector">
+              <p style="margin-bottom: 8px; text-align: center;">解答の形式を選択：</p>
+              <div class="ineq-format-btns">
+                <button class="choice-btn ineq-fmt-btn" data-fmt="compound">a &lt; x &lt; b 型</button>
+                <button class="choice-btn ineq-fmt-btn" data-fmt="split">x &lt; a, b &lt; x 型</button>
+                <button class="choice-btn ineq-fmt-btn" data-fmt="all">すべての実数</button>
+                <button class="choice-btn ineq-fmt-btn" data-fmt="none">解なし</button>
+              </div>
+            </div>
+
+            <!-- Dynamic inputs based on format -->
+            <div id="ineq-inputs-wrapper" class="hidden" style="width:100%; display:flex; flex-direction:column; align-items:center; gap: 12px; margin-top: 10px;">
+              <div id="selected-ineq-fmt-text" style="font-size:14px; color:var(--apple-indigo); font-weight:600;"></div>
+              
+              <!-- Compound type: a < x < b -->
+              <div id="ineq-compound-row" class="inequality-input-row hidden">
+                <!-- a -->
+                <div class="input-block">
+                  <div class="hybrid-input-wrapper">
+                    <input type="text" class="val-input" id="input-ie-left" placeholder="a">
+                    <div class="fraction-inputs hidden" id="frac-ie-left">
+                      <input type="text" class="val-input num-input" id="input-ie-left-num">
+                      <div class="frac-line"></div>
+                      <input type="text" class="val-input den-input" id="input-ie-left-den">
+                    </div>
+                  </div>
+                  <button class="toggle-frac-btn" data-target="ie-left">分数</button>
+                </div>
+                
+                <!-- Sign Left -->
+                <select class="sign-select" id="input-ie-sign-left">
+                  <option value="<">&lt;</option>
+                  <option value="<=">&le;</option>
+                </select>
+
+                <span class="math">x</span>
+
+                <!-- Sign Right -->
+                <select class="sign-select" id="input-ie-sign-right">
+                  <option value="<">&lt;</option>
+                  <option value="<=">&le;</option>
+                </select>
+
+                <!-- b -->
+                <div class="input-block">
+                  <div class="hybrid-input-wrapper">
+                    <input type="text" class="val-input" id="input-ie-right" placeholder="b">
+                    <div class="fraction-inputs hidden" id="frac-ie-right">
+                      <input type="text" class="val-input num-input" id="input-ie-right-num">
+                      <div class="frac-line"></div>
+                      <input type="text" class="val-input den-input" id="input-ie-right-den">
+                    </div>
+                  </div>
+                  <button class="toggle-frac-btn" data-target="ie-right">分数</button>
+                </div>
+              </div>
+
+              <!-- Split type: x < a, b < x -->
+              <div id="ineq-split-row" class="inequality-input-row hidden">
+                <span class="math">x</span>
+                <!-- Sign Left -->
+                <select class="sign-select" id="input-ie-split-sign-left">
+                  <option value="<">&lt;</option>
+                  <option value="<=">&le;</option>
+                  <option value=">">&gt;</option>
+                  <option value=">=">&ge;</option>
+                </select>
+
+                <!-- a -->
+                <div class="input-block">
+                  <div class="hybrid-input-wrapper">
+                    <input type="text" class="val-input" id="input-ie-split-left" placeholder="a">
+                    <div class="fraction-inputs hidden" id="frac-ie-split-left">
+                      <input type="text" class="val-input num-input" id="input-ie-split-left-num">
+                      <div class="frac-line"></div>
+                      <input type="text" class="val-input den-input" id="input-ie-split-left-den">
+                    </div>
+                  </div>
+                  <button class="toggle-frac-btn" data-target="ie-split-left">分数</button>
+                </div>
+
+                <span class="math" style="margin: 0 4px;">, </span>
+
+                <!-- b (second inequality, e.g. b < x or x > b) -->
+                <!-- Typically written as: x < a, b < x (where b > a) -->
+                <!-- We'll prompt: x < a, b < x (or similar sign for x) -->
+                <div class="input-block">
+                  <div class="hybrid-input-wrapper">
+                    <input type="text" class="val-input" id="input-ie-split-right" placeholder="b">
+                    <div class="fraction-inputs hidden" id="frac-ie-split-right">
+                      <input type="text" class="val-input num-input" id="input-ie-split-right-num">
+                      <div class="frac-line"></div>
+                      <input type="text" class="val-input den-input" id="input-ie-split-right-den">
+                    </div>
+                  </div>
+                  <button class="toggle-frac-btn" data-target="ie-split-right">分数</button>
+                </div>
+
+                <select class="sign-select" id="input-ie-split-sign-right">
+                  <option value="<">&lt;</option>
+                  <option value="<=">&le;</option>
+                  <option value=">">&gt;</option>
+                  <option value=">=">&ge;</option>
+                </select>
+                <span class="math">x</span>
+              </div>
+
+              <!-- Button to change format -->
+              <button class="change-format-link" id="change-ineq-fmt-btn" style="margin-top:8px;">◀ 解答形式を選び直す</button>
+            </div>
+          </div>
+
+          <!-- Category 5: グラフマッチング Card Selector (4択) -->
+          <div id="input-row-matching" class="input-row hidden" style="width:100%;">
+            <p style="text-align:center; font-size:14px; color:var(--apple-text-secondary); margin-bottom:12px;">正しいグラフのカードを1つ選んでください。</p>
+            <div class="graph-grid">
+              <div class="graph-card" data-choice="0">
+                <canvas class="graph-canvas" id="canvas-0" width="180" height="180"></canvas>
+                <div class="badge">A</div>
+              </div>
+              <div class="graph-card" data-choice="1">
+                <canvas class="graph-canvas" id="canvas-1" width="180" height="180"></canvas>
+                <div class="badge">B</div>
+              </div>
+              <div class="graph-card" data-choice="2">
+                <canvas class="graph-canvas" id="canvas-2" width="180" height="180"></canvas>
+                <div class="badge">C</div>
+              </div>
+              <div class="graph-card" data-choice="3">
+                <canvas class="graph-canvas" id="canvas-3" width="180" height="180"></canvas>
+                <div class="badge">D</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Feedback & Confirm action buttons -->
+        <div class="actions" id="action-area" style="margin-top: 24px;">
+          <button class="primary-btn" id="judge-btn">判定する</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Central Toast Feedback Notification -->
+  <div class="feedback" id="feedback-toast">正解！素晴らしい！</div>
+
+  <!-- JS Logic Script -->
+  <script defer src="script.js"></script>
+</body>
+</html>

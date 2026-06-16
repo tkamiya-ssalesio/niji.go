@@ -1,0 +1,720 @@
+:root {
+  --theme-primary: #38bdf8; /* Sky Blue 400 */
+  --theme-secondary: #0ea5e9; /* Sky Blue 500 */
+  --theme-accent: #818cf8; /* Indigo 400 */
+  --apple-blue: #3b82f6;
+  --apple-green: #34d399; /* Emerald 400 */
+  --apple-red: #f87171; /* Red 400 */
+  --apple-yellow: #fbbf24; /* Amber 400 */
+  --apple-bg: #0f172a; /* Slate 900 - sleek dark bg */
+  --apple-card-bg: #1e293b; /* Slate 800 */
+  --apple-text-primary: #f8fafc; /* Slate 50 */
+  --apple-text-secondary: #cbd5e1; /* Slate 300 */
+  --apple-input-bg: #334155; /* Slate 700 */
+  --glass-border: #475569; /* Slate 600 */
+  --glass-border-focus: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--apple-bg);
+  background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.03), transparent 45%);
+  color: var(--apple-text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.apple-card {
+  background: var(--apple-card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 32px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 12px;
+}
+
+header.hidden { display: none; }
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--apple-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.back-btn:hover {
+  color: var(--apple-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.header-placeholder {
+  width: 60px;
+}
+
+/* --- Title Screen --- */
+.title-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: fadeIn 0.5s ease-out;
+}
+.title-screen.hidden { display: none; }
+
+.title-logo {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.15));
+}
+
+.title-subtitle {
+  font-size: 16px;
+  color: var(--apple-text-secondary);
+  font-weight: 500;
+  text-align: center;
+  margin-top: -16px;
+  letter-spacing: 0.5px;
+}
+
+.screen-title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  background: var(--apple-input-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: var(--apple-text-primary);
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu-btn:hover {
+  background: #3f51b540;
+  border-color: var(--theme-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.1);
+}
+.menu-btn:active {
+  transform: scale(0.98);
+}
+.menu-btn .icon {
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-text h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.btn-text p {
+  font-size: 13px;
+  color: var(--apple-text-secondary);
+}
+
+/* --- Tutorial Slideshow --- */
+.tutorial-card {
+  background: var(--apple-input-bg);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid var(--glass-border);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tutorial-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.3s ease-out;
+}
+.tutorial-slide p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.tutorial-slide .highlight {
+  color: var(--theme-primary);
+  font-weight: 700;
+}
+.tutorial-slide .warning {
+  color: var(--apple-red);
+  font-weight: 700;
+}
+
+.visual-box {
+  background: var(--apple-bg);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.visual-box .math {
+  font-size: 22px;
+}
+
+.tutorial-nav-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+.slide-indicator {
+  font-size: 14px;
+  color: var(--apple-text-secondary);
+  font-weight: 600;
+}
+
+/* --- Intro Screen --- */
+.intro-box {
+  background: var(--apple-bg);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+}
+.intro-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.intro-step {
+  border-bottom: 1px dashed var(--glass-border);
+  padding-bottom: 12px;
+}
+.intro-step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.step-badge {
+  background: var(--theme-primary);
+  color: var(--apple-bg);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.intro-step h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+.intro-step p {
+  font-size: 13px;
+  color: var(--apple-text-secondary);
+  line-height: 1.5;
+}
+
+/* --- Problem Area --- */
+.problem-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideUp 0.4s ease-out;
+}
+.stats-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--apple-input-bg);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--glass-border);
+}
+
+.equation-container {
+  text-align: center;
+  padding: 16px 0;
+}
+.prompt-text {
+  font-size: 14px;
+  color: var(--apple-text-secondary);
+  margin-bottom: 8px;
+}
+.equation-display {
+  font-size: 32px;
+  min-height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Input Blocks and Hybrid System --- */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.input-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.formula-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.input-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 60px;
+  margin: 0 4px;
+}
+
+.hybrid-input-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.val-input {
+  width: 64px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--apple-input-bg);
+  color: var(--apple-text-primary);
+  transition: all 0.2s;
+}
+.val-input:focus {
+  outline: none;
+  background: var(--apple-bg);
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.val-input.mini-input {
+  width: 48px;
+  height: 38px;
+  font-size: 16px;
+}
+
+.fraction-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.fraction-inputs .val-input {
+  width: 50px;
+  height: 36px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+.frac-line {
+  width: 44px;
+  height: 2px;
+  background: var(--apple-text-primary);
+}
+
+.toggle-frac-btn {
+  background: transparent;
+  color: var(--theme-primary);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.toggle-frac-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--theme-primary);
+}
+.toggle-frac-btn.active {
+  background: var(--theme-accent);
+  color: white;
+  border-color: var(--theme-accent);
+}
+
+.bracket {
+  font-size: 38px;
+  font-weight: 200;
+  color: var(--glass-border);
+  user-select: none;
+}
+.exponent {
+  font-size: 20px;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: -12px;
+  color: var(--apple-text-secondary);
+}
+
+/* --- Category 2: Min/Max Layout --- */
+#input-row-minmax {
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.mm-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.mm-label {
+  color: var(--apple-text-secondary);
+  font-size: 14px;
+  min-width: 90px;
+  text-align: right;
+}
+
+/* --- Category 3: Equation Layout --- */
+#input-row-equation {
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.choice-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+.choice-btn {
+  background: var(--apple-input-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--apple-text-primary);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.choice-btn:hover {
+  border-color: var(--theme-primary);
+  background: rgba(56, 189, 248, 0.05);
+}
+.choice-btn.active {
+  background: var(--theme-primary);
+  color: var(--apple-bg);
+  border-color: var(--theme-primary);
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+}
+.solutions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* --- Category 4: Inequality Layout --- */
+#input-row-inequality {
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+.ineq-format-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+.inequality-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.sign-select {
+  background: var(--apple-input-bg);
+  border: 1px solid var(--glass-border);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--theme-primary);
+  cursor: pointer;
+  appearance: none;
+  text-align: center;
+  min-width: 54px;
+  transition: all 0.2s;
+}
+.sign-select:focus {
+  outline: none;
+  background: var(--apple-bg);
+  border-color: var(--theme-primary);
+}
+
+.change-format-link {
+  background: none;
+  border: none;
+  color: var(--theme-accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.change-format-link:hover {
+  background: rgba(129, 140, 248, 0.1);
+}
+
+/* --- Category 5: Graph Matching Layout --- */
+.graph-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.graph-card {
+  background: var(--apple-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.graph-card:hover {
+  border-color: var(--theme-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(56, 189, 248, 0.1);
+}
+.graph-card.active {
+  border-color: var(--theme-primary);
+  background: rgba(56, 189, 248, 0.05);
+  box-shadow: 0 0 0 2px var(--theme-primary);
+}
+.graph-canvas {
+  width: 100%;
+  height: auto;
+  max-width: 170px;
+  border-radius: 8px;
+  background: #1e293b;
+}
+.graph-card .badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--apple-text-primary);
+  font-size: 12px;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* --- Primary and Secondary Buttons --- */
+.primary-btn {
+  background: var(--theme-primary);
+  color: var(--apple-bg);
+  border: none;
+  border-radius: 16px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.primary-btn:hover {
+  background: var(--theme-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+}
+.primary-btn:active {
+  transform: translateY(1px);
+}
+
+.secondary-btn {
+  background: var(--apple-input-bg);
+  color: var(--apple-text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.secondary-btn:hover {
+  background: #475569;
+  border-color: var(--apple-text-secondary);
+}
+
+/* --- Feedback Toast --- */
+.feedback {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.feedback.show {
+  top: 30px;
+  opacity: 1;
+}
+.feedback.success { background: var(--apple-green); color: var(--apple-bg); }
+.feedback.error { background: var(--apple-red); color: white; }
+
+/* --- Footer --- */
+.app-footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--apple-text-secondary);
+  margin-top: 12px;
+  font-weight: 500;
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 520px) {
+  .title-logo { font-size: 42px; }
+  .apple-card { padding: 24px 16px; }
+  .graph-grid { gap: 10px; }
+  .val-input { width: 56px; height: 44px; font-size: 18px; }
+  .fraction-inputs .val-input { width: 44px; height: 32px; font-size: 14px; }
+  .frac-line { width: 38px; }
+  .bracket { font-size: 32px; }
+  .formula-layout { gap: 2px; }
+}
