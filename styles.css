@@ -1,17 +1,18 @@
 :root {
-  --theme-primary: #facc15; /* Chalk Yellow (Yellow 400) */
-  --theme-secondary: #eab308; /* Chalk Yellow (Yellow 500) */
-  --theme-accent: #38bdf8; /* Chalk Blue (Sky 400) */
-  --theme-cyan: #2dd4bf; /* Chalk Green (Teal 400) */
-  --apple-green: #4ade80; /* Emerald 400 */
-  --apple-red: #f87171; /* Red 400 */
-  --apple-bg: #0c1510; /* Deep Blackboard Dark Green */
-  --apple-card-bg: #16261d; /* Blackboard Green */
-  --apple-input-bg: #0c1510; /* Darker Blackboard Green for Inputs */
-  --glass-border: #274032; /* Subtle chalk border */
-  --glass-border-focus: #facc15;
-  --apple-text-primary: #ffffff; /* Chalk White - High contrast */
-  --apple-text-secondary: #94a3b8; /* Slate 400 */
+  --theme-primary: #3b82f6; /* Pastel Blue (Blue 500) */
+  --theme-secondary: #2563eb; /* Blue 600 */
+  --theme-accent: #8b5cf6; /* Violet 500 */
+  --theme-cyan: #06b6d4; /* Cyan 500 */
+  --apple-green: #10b981; /* Emerald 500 */
+  --apple-red: #ef4444; /* Red 500 */
+  --apple-yellow: #f59e0b; /* Amber 500 */
+  --apple-bg: #f8fafc; /* Soft white/light gray background */
+  --apple-card-bg: rgba(255, 255, 255, 0.85); /* Semi-transparent white for glassmorphism */
+  --apple-input-bg: #ffffff; /* Pure white for input fields */
+  --glass-border: #cbd5e1; /* Subtle slate border */
+  --glass-border-focus: #3b82f6;
+  --apple-text-primary: #0f172a; /* Slate 900 - High contrast black/dark slate */
+  --apple-text-secondary: #475569; /* Slate 600 */
 }
 
 * {
@@ -29,27 +30,24 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--apple-bg);
-  /* Mathematical background grid, parabola, and animated rainbow glow */
+  /* Pure moving rainbow gradient with center math parabola curve backdrop */
   background-image: 
-    /* 1. Grid Blackboard Lines */
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    /* 2. Math coordinate parabola backdrop */
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><g stroke='rgba(255, 255, 255, 0.02)' stroke-width='1.5' fill='none'><line x1='0' y1='400' x2='800' y2='400'/><line x1='400' y1='0' x2='400' y2='800'/><path d='M 100 100 Q 400 720 700 100' stroke-width='2'/><circle cx='400' cy='720' r='5' fill='rgba(255, 255, 255, 0.03)'/><text x='420' y='380' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='26' font-style='italic'>y = ax² + bx + c</text><text x='760' y='390' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>x</text><text x='415' y='30' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>y</text></g></svg>"),
-    /* 3. Extremely subtle moving rainbow backdrop for "niji.go" (Very low opacity) */
+    /* 1. Math coordinate parabola backdrop (Grey with LaTeX-formatted equations, base64-encoded to prevent browser parsing errors) */
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIiB2aWV3Qm94PSIwIDAgODAwIDgwMCI+PGcgc3Ryb2tlPSJyZ2JhKDE1LCAyMywgNDIsIDAuMDkpIiBzdHJva2Utd2lkdGg9IjEuNSIgZmlsbD0ibm9uZSI+PGxpbmUgeDE9IjAiIHkxPSI0MDAiIHgyPSI4MDAiIHkyPSI0MDAiLz48bGluZSB4MT0iNDAwIiB5MT0iMCIgeDI9IjQwMCIgeTI9IjgwMCIvPjxwYXRoIGQ9Ik0gMTAwIDEwMCBRIDQwMCA3MjAgNzAwIDEwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iNzIwIiByPSI1IiBmaWxsPSJyZ2JhKDE1LCAyMywgNDIsIDAuMTIpIi8+PHRleHQgeD0iNDIwIiB5PSIzODAiIGZpbGw9InJnYmEoMTUsIDIzLCA0MiwgMC4xNSkiIGZvbnQtZmFtaWx5PSJLYVRlWF9NYXRoLEdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMjYiIGZvbnQtc3R5bGU9Iml0YWxpYyI+eSA9IGF4PHRzcGFuIGR5PSItOCIgZm9udC1zaXplPSIxOCI+MjwvdHNwYW4+PHRzcGFuIGR5PSI4Ij4gKyBieCArIGM8L3RzcGFuPjwvdGV4dD48dGV4dCB4PSI3NjAiIHk9IjM5MCIgZmlsbD0icmdiYSgxNSwgMjMsIDQyLCAwLjE1KSIgZm9udC1mYW1pbHk9IkthVGVYX01hdGgsR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC1zdHlsZT0iaXRhbGljIj54PC90ZXh0Pjx0ZXh0IHg9IjQxNSIgeT0iMzAiIGZpbGw9InJnYmEoMTUsIDIzLCA0MiwgMC4xNSkiIGZvbnQtZmFtaWx5PSJLYVRlWF9NYXRoLEdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtc3R5bGU9Iml0YWxpYyI+eTwvdGV4dD48L2c+PC9zdmc+"),
+    /* 2. Pastel Rainbow Backdrop for "niji.go" (Transparent, highly visible pastel blend at 0.35) */
     linear-gradient(120deg, 
-      rgba(239, 68, 68, 0.02) 0%,   
-      rgba(249, 115, 22, 0.02) 15%,  
-      rgba(250, 204, 21, 0.02) 30%,   
-      rgba(52, 211, 153, 0.02) 45%,   
-      rgba(56, 189, 248, 0.02) 60%,  
-      rgba(99, 102, 241, 0.02) 75%,  
-      rgba(167, 139, 250, 0.02) 90%,
-      rgba(239, 68, 68, 0.02) 100%
+      rgba(239, 68, 68, 0.35) 0%,   
+      rgba(249, 115, 22, 0.35) 15%,  
+      rgba(250, 204, 21, 0.35) 30%,   
+      rgba(52, 211, 153, 0.35) 45%,   
+      rgba(56, 189, 248, 0.35) 60%,  
+      rgba(99, 102, 241, 0.35) 75%,  
+      rgba(167, 139, 250, 0.35) 90%,
+      rgba(239, 68, 68, 0.35) 100%
     );
-  background-size: 40px 40px, 800px 800px, 300% 300%;
-  background-position: center, center, 0% 50%;
-  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: 800px 800px, 300% 300%;
+  background-position: center, 0% 50%;
+  background-repeat: no-repeat, no-repeat;
   color: var(--apple-text-primary);
   min-height: 100vh;
   display: flex;
@@ -60,9 +58,9 @@ body {
 }
 
 @keyframes rainbowGlow {
-  0% { background-position: center, center, 0% 50%; }
-  50% { background-position: center, center, 100% 50%; }
-  100% { background-position: center, center, 0% 50%; }
+  0% { background-position: center, 0% 50%; }
+  50% { background-position: center, 100% 50%; }
+  100% { background-position: center, 0% 50%; }
 }
 
 .container {
@@ -73,10 +71,12 @@ body {
 
 .apple-card {
   background: var(--apple-card-bg);
+  backdrop-filter: blur(16px); /* Glassmorphism blur */
+  -webkit-backdrop-filter: blur(16px);
   border: 1.5px solid var(--glass-border);
   border-radius: 24px;
   padding: 32px 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -114,7 +114,7 @@ h1 {
 }
 .back-btn:hover {
   color: var(--apple-text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.05);
 }
 
 .header-placeholder {
@@ -140,7 +140,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 4px;
-  filter: drop-shadow(0 2px 8px rgba(250, 204, 21, 0.15));
+  filter: drop-shadow(0 2px 8px rgba(15, 23, 42, 0.05));
 }
 
 .title-subtitle {
@@ -182,11 +182,13 @@ h1 {
   text-align: left;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 .menu-btn:hover {
-  background: rgba(250, 204, 21, 0.05);
+  background: rgba(59, 130, 246, 0.05);
   border-color: var(--theme-primary);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
 }
 .menu-btn:active {
   transform: scale(0.98);
@@ -198,7 +200,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 23, 42, 0.02);
   border: 1px solid var(--glass-border);
   border-radius: 12px;
 }
@@ -300,8 +302,8 @@ h1 {
   margin-bottom: 6px;
 }
 .step-badge {
-  background: var(--theme-accent);
-  color: var(--apple-bg);
+  background: var(--theme-primary);
+  color: #ffffff;
   font-size: 10px;
   font-weight: 800;
   padding: 3px 8px;
@@ -412,7 +414,7 @@ h1 {
   outline: none;
   background: var(--apple-bg);
   border-color: var(--theme-primary);
-  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
 .val-input.mini-input {
@@ -441,8 +443,8 @@ h1 {
 
 .toggle-frac-btn {
   background: transparent;
-  color: var(--theme-accent);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--theme-primary);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   padding: 3px 8px;
   border-radius: 12px;
   font-size: 10px;
@@ -452,13 +454,13 @@ h1 {
   white-space: nowrap;
 }
 .toggle-frac-btn:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: var(--theme-accent);
+  background: rgba(59, 130, 246, 0.05);
+  border-color: var(--theme-primary);
 }
 .toggle-frac-btn.active {
-  background: var(--theme-cyan);
-  color: var(--apple-bg);
-  border-color: var(--theme-cyan);
+  background: var(--theme-accent);
+  color: #ffffff;
+  border-color: var(--theme-accent);
 }
 
 .bracket {
@@ -520,13 +522,13 @@ h1 {
 }
 .choice-btn:hover {
   border-color: var(--theme-primary);
-  background: rgba(250, 204, 21, 0.05);
+  background: rgba(59, 130, 246, 0.05);
 }
 .choice-btn.active {
   background: var(--theme-primary);
-  color: var(--apple-bg);
+  color: #ffffff;
   border-color: var(--theme-primary);
-  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.2);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 .solutions-row {
   display: flex;
@@ -580,7 +582,7 @@ h1 {
 .change-format-link {
   background: none;
   border: none;
-  color: var(--theme-accent);
+  color: var(--theme-primary);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -589,7 +591,7 @@ h1 {
   transition: background 0.2s;
 }
 .change-format-link:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.05);
 }
 
 /* --- Category 5: Graph Matching Layout --- */
@@ -617,10 +619,11 @@ h1 {
 .graph-card:hover {
   border-color: var(--theme-primary);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 .graph-card.active {
   border-color: var(--theme-primary);
-  background: rgba(250, 204, 21, 0.05);
+  background: rgba(59, 130, 246, 0.05);
   box-shadow: 0 0 0 2px var(--theme-primary);
 }
 .graph-canvas {
@@ -628,15 +631,16 @@ h1 {
   height: auto;
   max-width: 170px;
   border-radius: 8px;
-  background: #090e0b;
+  background: #ffffff;
+  border: 1px solid var(--glass-border);
 }
 .graph-card .badge {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(15, 23, 42, 0.8);
   border: 1px solid var(--glass-border);
-  color: var(--apple-text-primary);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 800;
   width: 22px;
@@ -656,14 +660,14 @@ h1 {
 
 .primary-btn {
   background: var(--theme-primary);
-  color: var(--apple-bg); /* High-contrast: Black text on yellow background */
+  color: #ffffff; /* High contrast white text on blue background */
   border: none;
   border-radius: 16px;
   padding: 14px 24px;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
   transition: all 0.2s;
   width: 100%;
   max-width: 280px;
@@ -674,7 +678,7 @@ h1 {
 .primary-btn:hover {
   background: var(--theme-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(250, 204, 21, 0.35);
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.35);
 }
 .primary-btn:active {
   transform: translateY(1px);
@@ -698,7 +702,7 @@ h1 {
   transition: all 0.2s;
 }
 .secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 23, 42, 0.02);
   border-color: var(--apple-text-primary);
 }
 
@@ -716,13 +720,13 @@ h1 {
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
 }
 .feedback.show {
   top: 30px;
   opacity: 1;
 }
-.feedback.success { background: var(--apple-green); color: var(--apple-bg); }
+.feedback.success { background: var(--apple-green); color: white; }
 .feedback.error { background: var(--apple-red); color: white; }
 
 /* --- Footer --- */
