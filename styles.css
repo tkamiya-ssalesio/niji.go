@@ -1,15 +1,16 @@
 :root {
-  --theme-primary: #ec4899; /* Pink */
-  --theme-accent: #a78bfa; /* Violet */
-  --theme-cyan: #22d3ee; /* Cyan */
-  --apple-green: #34d399; /* Emerald */
-  --apple-red: #f87171; /* Red */
-  --apple-bg: #070512; /* Deep Space Black */
-  --apple-card-bg: rgba(18, 14, 38, 0.75); /* Translucent Amethyst for Glassmorphism */
-  --apple-input-bg: rgba(30, 24, 61, 0.6); /* Translucent dark input */
-  --glass-border: rgba(167, 139, 250, 0.15); /* Soft glowing border */
-  --glass-border-focus: rgba(236, 72, 153, 0.6);
-  --apple-text-primary: #ffffff; /* Pure Chalk White - High contrast */
+  --theme-primary: #facc15; /* Chalk Yellow (Yellow 400) */
+  --theme-secondary: #eab308; /* Chalk Yellow (Yellow 500) */
+  --theme-accent: #38bdf8; /* Chalk Blue (Sky 400) */
+  --theme-cyan: #2dd4bf; /* Chalk Green (Teal 400) */
+  --apple-green: #4ade80; /* Emerald 400 */
+  --apple-red: #f87171; /* Red 400 */
+  --apple-bg: #0c1510; /* Deep Blackboard Dark Green */
+  --apple-card-bg: #16261d; /* Blackboard Green */
+  --apple-input-bg: #0c1510; /* Darker Blackboard Green for Inputs */
+  --glass-border: #274032; /* Subtle chalk border */
+  --glass-border-focus: #facc15;
+  --apple-text-primary: #ffffff; /* Chalk White - High contrast */
   --apple-text-secondary: #94a3b8; /* Slate 400 */
 }
 
@@ -28,33 +29,40 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   background-color: var(--apple-bg);
-  /* 
-     Chic & Soft Rainbow Theme:
-     Fusing coordinate systems, chalk lines, and highly-translucent radial rainbow glows (aurora effect).
-     Keeps the UI extremely readable while creating an aesthetic rainbow feeling.
-  */
+  /* Mathematical background grid, parabola, and animated rainbow glow */
   background-image: 
-    /* 1. Thin math grid pattern */
+    /* 1. Grid Blackboard Lines */
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     /* 2. Math coordinate parabola backdrop */
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><g stroke='rgba(255, 255, 255, 0.02)' stroke-width='1.5' fill='none'><line x1='0' y1='400' x2='800' y2='400'/><line x1='400' y1='0' x2='400' y2='800'/><path d='M 100 100 Q 400 720 700 100' stroke-width='2'/><circle cx='400' cy='720' r='5' fill='rgba(255, 255, 255, 0.03)'/><text x='420' y='380' fill='rgba(255, 255, 255, 0.03)' font-family='serif' font-size='26' font-style='italic'>y = ax² + bx + c</text><text x='760' y='390' fill='rgba(255, 255, 255, 0.03)' font-family='serif' font-size='22'>x</text><text x='415' y='30' fill='rgba(255, 255, 255, 0.03)' font-family='serif' font-size='22'>y</text></g></svg>"),
-    /* 3. Soft Rainbow Aurora (highly translucent: 3% - 6% opacity) */
-    radial-gradient(circle at 85% 15%, rgba(244, 63, 94, 0.06), transparent 45%),   /* Red/Pink (Top Right) */
-    radial-gradient(circle at 55% 10%, rgba(249, 115, 22, 0.04), transparent 40%),  /* Orange */
-    radial-gradient(circle at 25% 15%, rgba(234, 179, 8, 0.04), transparent 40%),   /* Yellow (Top Left) */
-    radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.05), transparent 45%),  /* Green (Bottom Left) */
-    radial-gradient(circle at 45% 90%, rgba(6, 182, 212, 0.05), transparent 40%),   /* Cyan */
-    radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.06), transparent 45%);  /* Purple/Indigo (Bottom Right) */
-  background-size: 40px 40px, 800px 800px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-  background-position: center, center, center, center, center, center, center, center;
-  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><g stroke='rgba(255, 255, 255, 0.02)' stroke-width='1.5' fill='none'><line x1='0' y1='400' x2='800' y2='400'/><line x1='400' y1='0' x2='400' y2='800'/><path d='M 100 100 Q 400 720 700 100' stroke-width='2'/><circle cx='400' cy='720' r='5' fill='rgba(255, 255, 255, 0.03)'/><text x='420' y='380' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='26' font-style='italic'>y = ax² + bx + c</text><text x='760' y='390' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>x</text><text x='415' y='30' fill='rgba(255, 255, 255, 0.04)' font-family='serif' font-size='22'>y</text></g></svg>"),
+    /* 3. Extremely subtle moving rainbow backdrop for "niji.go" (Very low opacity) */
+    linear-gradient(120deg, 
+      rgba(239, 68, 68, 0.02) 0%,   
+      rgba(249, 115, 22, 0.02) 15%,  
+      rgba(250, 204, 21, 0.02) 30%,   
+      rgba(52, 211, 153, 0.02) 45%,   
+      rgba(56, 189, 248, 0.02) 60%,  
+      rgba(99, 102, 241, 0.02) 75%,  
+      rgba(167, 139, 250, 0.02) 90%,
+      rgba(239, 68, 68, 0.02) 100%
+    );
+  background-size: 40px 40px, 800px 800px, 300% 300%;
+  background-position: center, center, 0% 50%;
+  background-repeat: repeat, no-repeat, no-repeat;
   color: var(--apple-text-primary);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  animation: rainbowGlow 30s ease infinite;
+}
+
+@keyframes rainbowGlow {
+  0% { background-position: center, center, 0% 50%; }
+  50% { background-position: center, center, 100% 50%; }
+  100% { background-position: center, center, 0% 50%; }
 }
 
 .container {
@@ -65,12 +73,10 @@ body {
 
 .apple-card {
   background: var(--apple-card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid var(--glass-border);
   border-radius: 24px;
   padding: 32px 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -92,9 +98,7 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.5px;
   font-family: 'Outfit', sans-serif;
-  background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--theme-primary);
 }
 
 .back-btn {
@@ -132,12 +136,11 @@ h1 {
   font-weight: 800;
   letter-spacing: -2px;
   font-family: 'Outfit', sans-serif;
-  /* Perfect pastel rainbow gradient for niji.go */
-  background: linear-gradient(135deg, #f43f5e, #fb923c, #facc15, #4ade80, #22d3ee, #818cf8, #c084fc);
+  background: linear-gradient(135deg, #f87171, #fb923c, #facc15, #4ade80, #38bdf8, #818cf8, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 4px;
-  filter: drop-shadow(0 4px 20px rgba(167, 139, 250, 0.25));
+  filter: drop-shadow(0 2px 8px rgba(250, 204, 21, 0.15));
 }
 
 .title-subtitle {
@@ -181,10 +184,9 @@ h1 {
   transition: all 0.2s;
 }
 .menu-btn:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: var(--theme-accent);
+  background: rgba(250, 204, 21, 0.05);
+  border-color: var(--theme-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(167, 139, 250, 0.05);
 }
 .menu-btn:active {
   transform: scale(0.98);
@@ -235,7 +237,7 @@ h1 {
   color: var(--apple-text-primary);
 }
 .tutorial-slide .highlight {
-  color: var(--theme-cyan);
+  color: var(--theme-primary);
   font-weight: 700;
 }
 .tutorial-slide .warning {
@@ -298,7 +300,7 @@ h1 {
   margin-bottom: 6px;
 }
 .step-badge {
-  background: var(--theme-cyan);
+  background: var(--theme-accent);
   color: var(--apple-bg);
   font-size: 10px;
   font-weight: 800;
@@ -410,7 +412,7 @@ h1 {
   outline: none;
   background: var(--apple-bg);
   border-color: var(--theme-primary);
-  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
 }
 
 .val-input.mini-input {
@@ -439,8 +441,8 @@ h1 {
 
 .toggle-frac-btn {
   background: transparent;
-  color: var(--theme-cyan);
-  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: var(--theme-accent);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   padding: 3px 8px;
   border-radius: 12px;
   font-size: 10px;
@@ -450,13 +452,13 @@ h1 {
   white-space: nowrap;
 }
 .toggle-frac-btn:hover {
-  background: rgba(34, 211, 238, 0.1);
-  border-color: var(--theme-cyan);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--theme-accent);
 }
 .toggle-frac-btn.active {
-  background: var(--theme-accent);
+  background: var(--theme-cyan);
   color: var(--apple-bg);
-  border-color: var(--theme-accent);
+  border-color: var(--theme-cyan);
 }
 
 .bracket {
@@ -518,13 +520,13 @@ h1 {
 }
 .choice-btn:hover {
   border-color: var(--theme-primary);
-  background: rgba(236, 72, 153, 0.05);
+  background: rgba(250, 204, 21, 0.05);
 }
 .choice-btn.active {
   background: var(--theme-primary);
-  color: var(--apple-text-primary);
+  color: var(--apple-bg);
   border-color: var(--theme-primary);
-  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.2);
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.2);
 }
 .solutions-row {
   display: flex;
@@ -562,7 +564,7 @@ h1 {
   border-radius: 10px;
   font-size: 20px;
   font-weight: 700;
-  color: var(--theme-cyan);
+  color: var(--theme-primary);
   cursor: pointer;
   appearance: none;
   text-align: center;
@@ -618,7 +620,7 @@ h1 {
 }
 .graph-card.active {
   border-color: var(--theme-primary);
-  background: rgba(236, 72, 153, 0.03);
+  background: rgba(250, 204, 21, 0.05);
   box-shadow: 0 0 0 2px var(--theme-primary);
 }
 .graph-canvas {
@@ -626,7 +628,7 @@ h1 {
   height: auto;
   max-width: 170px;
   border-radius: 8px;
-  background: #080614;
+  background: #090e0b;
 }
 .graph-card .badge {
   position: absolute;
@@ -653,27 +655,26 @@ h1 {
 }
 
 .primary-btn {
-  /* Dynamic pastel gradient for the main button */
-  background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4); 
-  color: #ffffff; /* High contrast white text */
+  background: var(--theme-primary);
+  color: var(--apple-bg); /* High-contrast: Black text on yellow background */
   border: none;
   border-radius: 16px;
   padding: 14px 24px;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
   transition: all 0.2s;
   width: 100%;
   max-width: 280px;
   text-align: center;
-  display: block;
-  margin: 0 auto;
+  display: block;      /* Block display to allow margin auto */
+  margin: 0 auto;      /* Force horizontal centering in any container */
 }
 .primary-btn:hover {
-  background: linear-gradient(135deg, #f43f5e, #7c3aed, #0891b2);
+  background: var(--theme-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 16px rgba(250, 204, 21, 0.35);
 }
 .primary-btn:active {
   transform: translateY(1px);
@@ -682,7 +683,7 @@ h1 {
 .tutorial-nav-btns .primary-btn {
   width: auto;
   min-width: 120px;
-  margin: 0;
+  margin: 0;           /* Reset auto margin in flex navigation */
 }
 
 .secondary-btn {
